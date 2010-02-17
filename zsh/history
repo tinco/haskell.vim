@@ -1,0 +1,219 @@
+cabal install dlist mps
+vim ../moe.cabal
+ghci --help
+cabal install data-default
+ghci 
+ghci -hide-package monads-fd
+vim aop.js
+sloccount aop.js contract.js fun.js jsdom.js mooractive* observers.js rpn_lang.js
+sloccount aop.js contract.js fun.js jsdom.js observers.js rpn_lang.js
+k
+port list pida
+sudo port insall pida
+sudo port install pida
+ls tmp
+ls tmp/json-scheme
+rm -fR tmp
+ls packrat
+rm -fR packrat
+sloccount .
+mzscheme packrat.ss
+mzscheme myjsdoc.ss
+pointfree 'let bind a c = join $ fmap c a'
+pointfree 'let bind a c = join (fmap c a)'
+pointfree 'bind a c = join (fmap c a)'
+ls ~/.m 
+ls *.m3u
+ls ~/.m | cat flv.m3u long.m3u short.m3u -
+ls ~/.m | cat flv.m3u long.m3u short.m3u - | sort
+ghc-pkg parsec
+cabal update
+cabal upgrade
+cabal install --reinstall dyre
+cabal install --reinstall parsec
+ghc-pkg list parsec
+cabal install --reinstall parsec-3.0.1
+cabal install text
+mkdir doc
+touch doc.hs
+cd proj/haskell/d
+cd proj/haskell/doc
+cd proj/scheme
+cd myjsdoc
+vim js-parser.ss myjsdoc.ss
+pointfree 'test a b c = a ++ (b ++ c)'
+pointfree 'test a b c = a ++ b ++ c'
+pointfree 'test a b = [a, b] '
+pointfree 'test b = [1, b] '
+pointfree 'test b = Just [1, b] '
+yi doc.hs
+exi
+cp -r doc /Volumes/urso/proj/haskell/
+cp -R yi /Volumes/urso/proj/haskell
+ll .zshenv
+vim zshenv
+cd .zsh
+cd bash_completion
+vim .zshrc
+cd .vim
+cd .vimperator
+la
+ll .vimperator
+mv .vimperator configs
+mv .vimperator vimperator
+ln -s configs/vimperator .vimperator
+ll .emacs.d
+cp -R configs /Volumes/urso/new_configs
+cd proj/haskell
+yi *
+cd haskell
+ghci
+cd doc
+cp doc.hs /Volumes/urso/proj/haskell/doc/doc.hs
+lla .z*
+cat .zcompdump
+mv .zshrc configs/zshrc
+ln -s configs/zshrc .zshrc
+mv .yi configs
+mv .yi yi
+cd yi
+ln -s configs/yi .yi
+yi
+cd configs
+cp -R yi zshrc /Volumes/urso/new_configs/.
+vim gallery.js
+cd proj
+cd scheme
+aquamacs test.ss claire-tmpl.ss
+vim gallery.html
+vimdiff gallery.js gallery2.js
+mv gallery2.js gallery.js
+rm gallery3.js
+rm gallery2.html gallery3.html gallery4.html
+cd 
+cd /Volumes/TREKSTOR
+cd .m
+jsshell
+vim observers.js
+aquamacs observer*.js
+jsshell -s -e 
+jsshell -s 
+jslint
+jsl
+rhino
+cd lib/l
+cd lib/
+rhino jslint.js
+rhino jslint.js --hel
+rhino jslint.js --help
+rhino jslint.js 
+rhino jslint.js ~/Sites/upn/observers.js
+rhino jslint.js ~/Sites/upn/observers.js | grep one
+rhino jslint.js onevar:false ~/Sites/upn/observers.js | grep var
+rhino jslint.js --onevar false  ~/Sites/upn/observers.js | grep var
+vim jslint.js
+rhino jslint.js ~/Sites/upn/observers.js | grep var
+vim observer* site-script.js
+ll
+lal
+cd upn
+vim site-script.js
+exit
+cd /Volumes/TREKSTOR/.m
+find ~/.m -type f | cat flv.m3u long.m3u short.m3u - | mplay
+cd Sites/claire
+vim ie*.css
+cp ie*.css ../hp
+cd Sites/hp
+vim ie.css ie7.css
+vim index.html
+cd proj/scheme/hp
+cp style.css style.css_3
+make
+cd proj/mac
+open DragQueen.xcodeproj
+cd uni/nue/projekt
+vim Makefile
+darcs record -a 
+darcs send --help
+cp latest.patch /Volumes/urso/proj/mac/Project\ Drag\ Queen
+darcs apply --help
+cd SUtil
+darcs record
+darcs send -o latest.patch
+mv latest.patch /Volumes/urso/proj/mac/SUtil
+sudo mv latest.patch /Volumes/urso/proj/mac/SUtil
+cd Project\ Drag\ Queen
+cd _darcs
+cd DragQueen
+cp -R Project\ Drag\ Queen /Volumes/urso/proj/mac/
+cd hp
+cp -R hp upn /Volumes/urso/Sites
+cp -r scheme /Volumes/urso/proj/.
+cd c
+cd claire
+darcs whatsnew
+darcs add **/*
+rm -fR _darcs
+rm -fR down gallery_old
+rm AC_QuickTime.js base_old.css
+cd writing
+cd img
+cd gallery
+cd film_home
+cd dub
+..l
+cp -R claire /Volumes/urso/Sites
+cd uni
+cd nue
+cp -r projekt /Volumes/urso/uni/nue/
+open .
+cd projekt
+du -sh
+cp -r c /Volumes/urso/uni/nue/projekt
+cd Sites
+cd
+cd cross_dev
+du -sh boost_1_39_0
+cp -r boost_1_39_0 boost_1_39_0_tmp
+cd /Applications
+cd Freebies\!
+cd Mac_OS_X_Freemind-0_8_1
+cd plugins
+cd FreeMind.app
+cd Contents
+cd Java
+cd lib
+cd ant
+.
+cd MacOS
+l
+ls Resources
+cat Info.plist| grep FreeMindWindowIcon
+cd Resources
+cp FreeMindWindowIcon.icns /Volumes/urso
+..
+cp Info.plist /Volumes/urso
+cd boost_1_39_0_tmp
+ls
+man bjam
+./bjam help
+: 1253238877:0;o README.txt
+: 1253238889:0;ls
+: 1253238891:0;o INSTALL
+: 1253238895:0;ls
+: 1253238899:0;cd doc
+: 1253238899:0;ls
+: 1253238902:0;cd html
+: 1253238902:0;ls
+: 1253238909:0;..
+: 1253238909:0;ls
+: 1253238916:0;cd pdf
+: 1253238916:0;ls
+: 1253238918:0;..
+: 1253238918:0;ls
+: 1253238919:0;cd src
+: 1253238920:0;ls
+: 1253238922:0;..
+: 1253238922:0;ls
+: 1253238937:0;open html/index.html

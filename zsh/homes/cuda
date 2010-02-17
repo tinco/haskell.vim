@@ -1,0 +1,9 @@
+
+export CUDA_HOME="/usr/local/cuda"
+export PATH="$PATH:$CUDA_HOME/bin"
+export MANPATH="$MANPATH:$CUDA_HOME/man"
+
+if [ "$ARCH" = 'darwin' ]; then
+    export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib:/Developer/CUDA/lib"
+fi
+

@@ -1,0 +1,24 @@
+
+if [ "$ARCH" = 'darwin' ]; then
+    export JAVA_HOME="/Library/Java/Home"
+else
+    export JAVA_HOME="/opt/java"
+fi
+
+#add groovy
+export GROOVY_HOME="$HOME/lib/groovy"
+export PATH="$GROOVY_HOME/bin:$PATH"
+
+# add scala
+export SCALA_HOME="$HOME/lib/scala"
+export MANPATH="$MANPATH:$SCALA_HOME/man"
+export PATH="$PATH:$SCALA_HOME/bin"
+
+export SBT_HOME="$HOME/lib/sbt"
+export PATH="$PATH:$SBT_HOME/bin"
+
+# add jruby
+export JRUBY_HOME="$HOME/lib/jruby"
+export PATH="$PATH:$JRUBY_HOME/bin"
+
+export MY_JAVA_LIB="$HOME/lib/java"
