@@ -87,7 +87,6 @@ ewicti()  { browser http://en.wiktionary.org/wiki/${(C)1// /_} }
 ggogle()  { browser "http://groups.google.com/groups?q=$*" }
 google()  { browser "http://www.google.com/search?&num=100&q=$*" }
 
-hoogle()  { browser "http://www.haskell.org/hoogle/?hoogle=$*" }
 hayoo() { browser "http://holumbus.fh-wedel.de/hayoo/hayoo.html#0:$*" }
 
 swikide()   { browser http://de.wikipedia.org/wiki/Spezial:Search/${(C)1} }
