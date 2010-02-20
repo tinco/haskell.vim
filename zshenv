@@ -6,8 +6,8 @@ export ARCH=`uname -s 2>/dev/null | tr '[:upper:]' '[:lower:]'`
 setenv() { export $1=$2 }  # csh compatibility
 
 [ -d "$HOME/.zsh/homes" ] && {
-    for h in `ls .zsh/homes`; do
-        source ".zsh/homes/$h"
+    for h in `ls "$HOME/.zsh/homes"`; do
+        source "$HOME/.zsh/homes/$h"
     done
 }
 
