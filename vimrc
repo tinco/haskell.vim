@@ -232,3 +232,5 @@ let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
 let g:haddock_docdir = "/usr/share/doc/ghc/html/"
 au Bufenter *.hs compiler ghc
+
+nmap <TAB> <C-^>
