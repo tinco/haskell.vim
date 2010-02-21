@@ -74,10 +74,11 @@ set expandtab
 
 set backupdir=~/.vim_backup
 
-let g:xterm16_brightness='default'
-let g:xterm16_colormap='soft'
+" let g:xterm16_brightness='default'
+" let g:xterm16_colormap='soft'
 " colorscheme xterm16
-colorscheme delek
+" colorscheme delek
+" colorscheme github
 
 set cinoptions+=l-1s,p0,t0,+2s
 set cedit=<ESC>
