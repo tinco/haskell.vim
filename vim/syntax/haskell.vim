@@ -111,7 +111,11 @@ sy match hsImport		"\<import\>\(.\|[^(]\)*\((.*)\)\?" contains=hsImportLabel,hsI
 sy keyword hsImportLabel import contained
 sy keyword hsImportMod		as qualified hiding contained
 sy match   hsModuleName  excludenl "\([A-Z]\w.?\)*" contained 
-sy region  hsImportList start="(" skip="," end=")" contained contains=hsType,hsLineComment,hsBlockComment,hs_FunctionName,hs_OpFunctionName
+sy region hsImportListInner start="(" end=")" contained keepend extend contains=hs_OpFunctionName
+sy region  hsImportList matchgroup=hsImportListParens start="("rs=s+1 end=")"re=e-1
+        \ contained 
+        \ keepend extend
+        \ contains=hsType,hsLineComment,hsBlockComment,hs_FunctionName,hsImportListInner
 
 " Comments
 sy match   hsLineComment      "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=@Spell
