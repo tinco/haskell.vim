@@ -118,8 +118,9 @@ sy region  hsImportList matchgroup=hsImportListParens start="("rs=s+1 end=")"re=
         \ contains=hsType,hsLineComment,hsBlockComment,hs_FunctionName,hsImportListInner
 
 " Comments
-sy match   hsLineComment      "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=@Spell
-sy region  hsBlockComment     start="{-"  end="-}" contains=hsBlockComment,@Spell
+sy keyword hsCommentTodo    TODO FIXME XXX TBD contained
+sy match   hsLineComment      "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=hsCommentTodo,@Spell
+sy region  hsBlockComment     start="{-"  end="-}" contains=hsBlockComment,hsCommentTodo,@Spell
 sy region  hsPragma	       start="{-#" end="#-}"
 
 syn match  hsSpecialChar	contained "\\\([0-9]\+\|o[0-7]\+\|x[0-9a-fA-F]\+\|[\"\\'&\\abfnrtv]\|^[A-Z^_\[\\\]]\)"
@@ -137,9 +138,6 @@ if exists("hs_highlight_debug")
 endif
 
 
-"  debugging :)
-" "hi Function guibg=green
-" "hi hs_funDefEnd guibg=black
 
 " C Preprocessor directives. Shamelessly ripped from c.vim and trimmed
 " First, see whether to flag directive-like lines or not
@@ -207,6 +205,7 @@ if version >= 508 || !exists("did_hs_syntax_inits")
   HiLink hsBlockComment     hsComment
   HiLink hsLineComment      hsComment
   HiLink hsComment          Comment
+  HiLink hsCommentTodo      Todo
   HiLink hsPragma           SpecialComment
   HiLink hsBoolean			  Boolean
   HiLink hsType             Type
