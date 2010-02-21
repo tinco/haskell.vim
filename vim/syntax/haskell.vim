@@ -62,9 +62,9 @@ syn match hsConSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
 syn match hsDelimiter  "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
 
 sy match hs_FunctionName "\<[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained
-sy match hs_HighliteInfixFunctionName "`.*`" contained
+sy match hs_HighliteInfixFunctionName "`[^`]*`" contained
 "sy match hs_InfixFunctionOp "\(\w\|\s\|(\|)\|\[\|\]\)\+\(\W\&[^=\s]\)*" contained
-sy match hs_InfixFunctionName ".*`.*`" contained contains=hs_HighliteInfixFunctionName
+sy match hs_InfixFunctionName "[^=]*`[^`]*`"me=e-1 contained contains=hs_HighliteInfixFunctionName
 sy match hs_OpFunctionName "(\(\W\&[^(),]\)\+)" contained
 
 sy match hs_DeclareFunction "^[a-z_]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
@@ -75,6 +75,7 @@ sy match hs_OpFunction "^(\(\W\&[^(),]\)\+)\(\n\(\W\|\$\)\|.\)*="me=s contains=h
 "  debugging :)
 " hi Function guibg=green
 " hi hs_InfixFunctionName guibg=green
+" hi hs_HighliteInfixFunctionName guibg=yellow
 "hi hs_InfixFunctionOp guibg=red
 " hi hs_DeclareFunction guibg=black
 
