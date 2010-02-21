@@ -107,7 +107,7 @@ syn match hsModule excludenl "\<module\>\(\s\|\n\)*\(\<.*\>\)\(\s\|\n\)*\((\(\w\
     \ contains=hsModuleLabel,hsComment,hsModuleName,hsImportList
 
 sy keyword hsModuleLabel module where contained
-sy match hsImport		"\<import\>.*" contains=hsImportLabel,hsImportMod,hsModuleName,hsImportList
+sy match hsImport		"\<import\>\(.\|[^(]\)*\((.*)\)\?" contains=hsImportLabel,hsImportMod,hsModuleName,hsImportList
 sy keyword hsImportLabel import contained
 sy keyword hsImportMod		as qualified hiding contained
 sy match   hsModuleName  excludenl "\([A-Z]\w.?\)*" contained 
