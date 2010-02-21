@@ -20,7 +20,7 @@ if version > 580
 endif
 let g:colors_name="github"
 
-hi Normal       guifg=#000000 guibg=#F8F8FF
+hi Normal       guifg=#000000 guibg=#F8F8FF ctermfg=black
 
 " {{{ Cursor
 hi Cursor		guibg=#444454 guifg=#F8F8FF
@@ -40,14 +40,14 @@ hi Folded		guibg=#ECECEC guifg=#808080 gui=bold
 hi vimFold		guibg=#ECECEC guifg=#808080 gui=bold
 hi FoldColumn	guibg=#ECECEC guifg=#808080 gui=bold
 
-hi LineNr		guifg=#959595 guibg=#ECECEC gui=bold
+hi LineNr		guifg=#959595 guibg=#ECECEC gui=bold ctermfg=gray
 hi NonText		guifg=#808080 guibg=#ECECEC
 hi Folded		guifg=#808080 guibg=#ECECEC gui=bold
 hi FoldeColumn  guifg=#808080 guibg=#ECECEC gui=bold
 
-hi VertSplit	guibg=#bbbbbb guifg=#bbbbbb gui=none
-hi StatusLine   guibg=#bbbbbb guifg=#404040 gui=bold
-hi StatusLineNC guibg=#d4d4d4 guifg=#404040 gui=italic
+hi VertSplit	guibg=#bbbbbb guifg=#bbbbbb gui=none ctermfg=grey ctermbg=black
+hi StatusLine   guibg=#bbbbbb guifg=#404040 gui=bold ctermfg=grey ctermbg=black
+hi StatusLineNC guibg=#d4d4d4 guifg=#404040 gui=italic ctermfg=lightgrey
 " }}}
 
 " {{{ Misc
@@ -73,23 +73,23 @@ hi Search		guibg=#cdcdfd guifg=#000000 gui=italic
 " {{{ Syntax groups
 hi Ignore		guifg=#808080
 hi Identifier	guifg=#0086B3
-hi PreProc		guifg=#A0A0A0 gui=bold
-hi Comment		guifg=#999988
-hi Constant		guifg=#177F80 gui=none
-hi String		guifg=#D81745
-hi Function		guifg=#990000 gui=bold
-hi Statement	guifg=#000000 gui=bold
-hi Type			guifg=#445588 gui=bold
-hi Number		guifg=#1C9898
+hi PreProc		guifg=#A0A0A0 gui=bold ctermfg=darkcyan
+hi Comment		guifg=#999988          ctermfg=darkcyan
+hi Constant		guifg=#177F80 gui=none ctermfg=cyan
+hi String		guifg=#D81745 ctermfg=darkred
+hi Function		guifg=#990000 gui=bold ctermfg=red
+hi Statement	guifg=#000000 gui=bold ctermfg=darkgray
+hi Type			guifg=#445588 gui=bold ctermfg=blue
+hi Number		guifg=#1C9898 ctermfg=cyan
 hi Todo			guifg=#FFFFFF guibg=#990000 gui=bold
-hi Special		guifg=#159828 gui=bold
+hi Special		guifg=#159828 gui=bold ctermfg=darkgreen
 hi rubySymbol   guifg=#960B73
 hi Error        guibg=#f8f8ff guifg=#ff1100 gui=undercurl
 hi Todo         guibg=#f8f8ff guifg=#ff1100 gui=underline
-hi Label        guifg=#000000 gui=bold
-hi StorageClass guifg=#000000 gui=bold
-hi Structure    guifg=#000000 gui=bold
-hi TypeDef      guifg=#000000 gui=bold
+hi Label        guifg=#000000 gui=bold ctermfg=darkgray
+hi StorageClass guifg=#000000 gui=bold ctermfg=darkgray
+hi Structure    guifg=#000000 gui=bold ctermfg=darkgray
+hi TypeDef      guifg=#000000 gui=bold ctermfg=darkgray
 " }}}
 
 " {{{ Completion menus
