@@ -181,15 +181,15 @@ if version >= 508 || !exists("did_hs_syntax_inits")
 	HiLink hsDelimiter        Delimiter
   endif
 
-  HiLink hsModuleLabel      Label
+  HiLink hsModuleLabel      Structure
   HiLink hsModuleName       Normal
 
-  HiLink hsImportLabel      Label
-  HiLink hsImportMod        Label
+  HiLink hsImportLabel      Include
+  HiLink hsImportMod        Include
 
   HiLink hsOperator         Operator
 
-  HiLink hsInfix            Label
+  HiLink hsInfix            Keyword
   HiLink hsStructure        Structure
   HiLink hsStatement        Statement
   HiLink hsConditional      Conditional
