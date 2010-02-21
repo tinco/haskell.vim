@@ -78,7 +78,7 @@ set backupdir=~/.vim_backup
 " let g:xterm16_colormap='soft'
 " colorscheme xterm16
 " colorscheme delek
-" colorscheme github
+colorscheme github
 
 set cinoptions+=l-1s,p0,t0,+2s
 set cedit=<ESC>
