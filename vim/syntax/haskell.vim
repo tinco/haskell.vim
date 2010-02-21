@@ -61,12 +61,22 @@ syn match hsConSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
 " Reserved symbols--cannot be overloaded.
 syn match hsDelimiter  "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
 
-sy match hs_FunctionName "\<[a-z0-9_]\(\S\&[^,\)\[\]]\)*\>" contained
+sy match hs_FunctionName "\<[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained
+sy match hs_HighliteInfixFunctionName "`.*`" contained
+"sy match hs_InfixFunctionOp "\(\w\|\s\|(\|)\|\[\|\]\)\+\(\W\&[^=\s]\)*" contained
+sy match hs_InfixFunctionName ".*`.*`" contained contains=hs_HighliteInfixFunctionName
 sy match hs_OpFunctionName "(\(\W\&[^(),]\)\+)" contained
 
-sy match hs_DeclareFunction "^\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
-sy match hs_Function "^[a-z0-9_]\S*\(\n\(\W\|\$\)\|.\)*="me=s contains=hs_FunctionName
+sy match hs_DeclareFunction "^[a-z_]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
+sy match hs_Function "^[a-z_]\S*\(\n\(\W\|\$\)\|.\)*="me=s contains=hs_InfixFunctionName,hs_InfixFunctionOp,hs_FunctionName
+"sy match hs_Function "^[a-z_]\S*\(\n\(\W\|\$\)\|.\)*="me=s contains=hs_InfixFunctionOp
 sy match hs_OpFunction "^(\(\W\&[^(),]\)\+)\(\n\(\W\|\$\)\|.\)*="me=s contains=hs_OpFunctionName
+
+"  debugging :)
+" hi Function guibg=green
+" hi hs_InfixFunctionName guibg=green
+"hi hs_InfixFunctionOp guibg=red
+" hi hs_DeclareFunction guibg=black
 
 sy keyword hsStructure data class where instance default deriving
 sy keyword hsTypedef type newtype
@@ -172,6 +182,7 @@ if version >= 508 || !exists("did_hs_syntax_inits")
   endif
 
   HiLink hs_FunctionName    Function
+  HiLink hs_HighliteInfixFunctionName Function
   HiLink hs_OpFunctionName  Function
   HiLink hsTypedef          Typedef
   HiLink hsVarSym           hsOperator
