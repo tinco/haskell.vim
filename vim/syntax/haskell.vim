@@ -61,7 +61,8 @@ syn match hsConSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
 " Reserved symbols--cannot be overloaded.
 syn match hsDelimiter  "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
 
-sy match hs_FunctionName "^[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained
+sy match hs_hlFunctionName "[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained 
+sy match hs_FunctionName "^[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained contains=hs_hlFunctionName
 sy match hs_HighliteInfixFunctionName "`[a-z_][^`]*`" contained
 sy match hs_InfixFunctionName "[^=]*`[a-z_][^`]*`"me=e-1 contained contains=hs_HighliteInfixFunctionName,hsType,hsConSym,hsVarSym
 sy match hs_HlInfixOp "\(\W\&\S\&[^`()[\]{}']\)\+" contained
@@ -122,7 +123,7 @@ sy region hsImportListInner start="(" end=")" contained keepend extend contains=
 sy region  hsImportList matchgroup=hsImportListParens start="("rs=s+1 end=")"re=e-1
         \ contained 
         \ keepend extend
-        \ contains=hsType,hsLineComment,hsBlockComment,hs_FunctionName,hsImportListInner
+        \ contains=hsType,hsLineComment,hsBlockComment,hs_hlFunctionName,hsImportListInner
 
 " Comments
 sy keyword hsCommentTodo    TODO FIXME XXX TBD contained
@@ -178,7 +179,7 @@ if version >= 508 || !exists("did_hs_syntax_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink hs_FunctionName    Function
+  HiLink hs_hlFunctionName    Function
   HiLink hs_HighliteInfixFunctionName Function
   HiLink hs_HlInfixOp       Function
   HiLink hs_OpFunctionName  Function
