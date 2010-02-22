@@ -1,0 +1,5 @@
+
+export JSDOCDIR="$HOME/lib/jsdoc-toolkit"
+export JSDOCTEMPLATEDIR="$JSDOCDIR/templates/jsdoc"
+export PATH="$JSDOCDIR/bin:$PATH"
+
