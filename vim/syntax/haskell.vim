@@ -61,23 +61,19 @@ syn match hsConSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
 " Reserved symbols--cannot be overloaded.
 syn match hsDelimiter  "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
 
-sy match hs_FunctionName "\<[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained
-sy match hs_HighliteInfixFunctionName "`[^`]*`" contained
-"sy match hs_InfixFunctionOp "\(\w\|\s\|(\|)\|\[\|\]\)\+\(\W\&[^=\s]\)*" contained
-sy match hs_InfixFunctionName "[^=]*`[^`]*`"me=e-1 contained contains=hs_HighliteInfixFunctionName
-sy match hs_OpFunctionName "(\(\W\&[^(),]\)\+)" contained
+sy match hs_FunctionName "^[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained
+sy match hs_HighliteInfixFunctionName "`[a-z_][^`]*`" contained
+sy match hs_InfixFunctionName "[^=]*`[a-z_][^`]*`"me=e-1 contained contains=hs_HighliteInfixFunctionName,hsType,hsConSym,hsVarSym
+sy match hs_HlInfixOp "\(\W\&\S\&[^`()[\]{}']\)\+" contained
+sy match hs_InfixOpFunctionName "\(\w\|\s\|\n\|[[\]{}()]\)\+[^:]=*\(\W\&\S\&\&[^='`()[\]{}@]\)\+" contained contains=hs_HlInfixOp
+sy match hs_OpFunctionName        "(\(\W\&[^(),]\)\+)" contained
+sy region hs_Function start="^[a-z_([{]" end="=\(\s\|\w\|[([]\)" keepend extend
+        \ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym
 
-sy match hs_DeclareFunction "^[a-z_]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
-sy match hs_Function "^[a-z_]\S*\(\n\(\W\|\$\)\|.\)*="me=s contains=hs_InfixFunctionName,hs_InfixFunctionOp,hs_FunctionName
-"sy match hs_Function "^[a-z_]\S*\(\n\(\W\|\$\)\|.\)*="me=s contains=hs_InfixFunctionOp
-sy match hs_OpFunction "^(\(\W\&[^(),]\)\+)\(\n\(\W\|\$\)\|.\)*="me=s contains=hs_OpFunctionName
+sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
 
-"  debugging :)
-" hi Function guibg=green
-" hi hs_InfixFunctionName guibg=green
-" hi hs_HighliteInfixFunctionName guibg=yellow
-"hi hs_InfixFunctionOp guibg=red
-" hi hs_DeclareFunction guibg=black
+"hi hs_Function guibg=green
+"hi hs_DeclareFunction guibg=red
 
 sy keyword hsStructure data class where instance default deriving
 sy keyword hsTypedef type newtype
@@ -184,6 +180,7 @@ if version >= 508 || !exists("did_hs_syntax_inits")
 
   HiLink hs_FunctionName    Function
   HiLink hs_HighliteInfixFunctionName Function
+  HiLink hs_HlInfixOp       Function
   HiLink hs_OpFunctionName  Function
   HiLink hsTypedef          Typedef
   HiLink hsVarSym           hsOperator
