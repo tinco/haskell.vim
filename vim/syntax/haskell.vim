@@ -64,17 +64,19 @@ syn match hsDelimiter  "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
 sy match hs_hlFunctionName "[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained 
 sy match hs_FunctionName "^[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained contains=hs_hlFunctionName
 sy match hs_HighliteInfixFunctionName "`[a-z_][^`]*`" contained
-sy match hs_InfixFunctionName "[^=]*`[a-z_][^`]*`"me=e-1 contained contains=hs_HighliteInfixFunctionName,hsType,hsConSym,hsVarSym
+sy match hs_InfixFunctionName "^\S[^=]*`[a-z_][^`]*`"me=e-1 contained contains=hs_HighliteInfixFunctionName,hsType,hsConSym,hsVarSym
 sy match hs_HlInfixOp "\(\W\&\S\&[^`()[\]{}']\)\+" contained
-sy match hs_InfixOpFunctionName "\(\w\|\s\|\n\|[[\]{}()]\)\+[^:]=*\(\W\&\S\&\&[^='`()[\]{}@]\)\+" contained contains=hs_HlInfixOp
+sy match hs_InfixOpFunctionName "^\(\w\|[[{(]\)\(\w\|\s\|\n\|[[\]{}()]\)*[^:]=*\(\W\&\S\&\&[^='`()[\]{}@]\)\+" contained contains=hs_HlInfixOp
 sy match hs_OpFunctionName        "(\(\W\&[^(),]\)\+)" contained
-sy region hs_Function start="^[a-z_([{]" end="=\(\s\|\w\|[([]\)" keepend extend
+sy region hs_Function start="^[a-z_([{]" end="=\(\s\|\n\|\w\|[([]\)" keepend extend
         \ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym
 
 sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
 
-"hi hs_Function guibg=green
-"hi hs_DeclareFunction guibg=red
+" hi hs_InfixOpFunctionName guibg=yellow
+" hi hs_Function guibg=green
+" hi hs_InfixFunctionName guibg=red
+" hi hs_DeclareFunction guibg=red
 
 sy keyword hsStructure data class where instance default deriving
 sy keyword hsTypedef type newtype
