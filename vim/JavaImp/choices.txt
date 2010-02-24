@@ -1,3 +1,0 @@
-ArrayList java.util.ArrayList 
-Iterator java.util.Iterator 
-DArrayList java.util.ArrayList 
