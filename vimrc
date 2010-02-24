@@ -145,12 +145,6 @@ map <leader>d :FuzzyFinderDir<CR>
 map <leader>f :FuzzyFinderFile<CR>
 map <leader>g :FuzzyFinderTag<CR>
 
-
-" settings for javaImp
-let g:JavaImpPaths= $HOME."/.vim/JavaImp/jmplist"
-let g:JavaImpDataDir= $HOME."/.vim/JavaImp/"
-let g:JavaImpDocPaths= "/usr/java/jsdk/docs/api"
-
 "settings for JavaBrowser
 let g:JavaBrowser_Ctags_Cmd=$HOME."/bin/ctags"
 
@@ -178,32 +172,9 @@ let g:Tmenu_ctags_cmd=$HOME."/bin/ctags"
 let g:explVertical = 1
 let g:explDetailedHelp = 1
 
-" EasyGrep Setup
-let g:EasyGrepMode=1
-let g:EasyGrepCommand=0
-let g:EasyGrepRecursive=0
-let g:EasyGrepHidden=0
-let g:EasyGrepAllOptionsInExplorer=1
-let g:EasyGrepWindow=0
-let g:EasyGrepOpenWindowOnMatch=0
-let g:EasyGrepEveryMatch=0
-let g:EasyGrepJumpToMatch=1
-let g:EasyGrepInvertWholeWord=0
-let g:EasyGrepFileAssociationsInExplorer=1
-let g:EasyGrepNoDirectMappings=0
-let g:EasyGrepReplaceWindowMode=0
-let g:EasyGrepReplaceAllPerFile=0
-
 map ,m :make<Enter><Enter><Enter>
 map ,,m :make 
 map ,lm :mak<Up><Enter><Enter><Enter>
-
-" map <silent> w <Plug>CamelCaseMotion_w
-" map <silent> b <Plug>CamelCaseMotion_b
-" map <silent> e <Plug>CamelCaseMotion_e
-"sunmap w 
-"sunmap b 
-"sunmap e 
 
 " configure supertab 
 " let g:SuperTabDefaultCompletionType = 'context'
