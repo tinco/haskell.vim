@@ -23,8 +23,8 @@ ZSH
 ===
 configuration consists of directory 'zsh' and the files zshenv and zshrc and
 all these are in a way interdependent.
-Install by copying directory zsh to \$HOME/.zsh, zshenv to \$HOME/.zshenv and
-zshrc to \$HOME/.zshrc.
+Install by copying directory zsh to $HOME/.zsh, zshenv to $HOME/.zshenv and
+zshrc to $HOME/.zshrc or create symbolic links.
 
 - directory zsh:
     - bash_completion: copy bash completion files into here if there is no one
@@ -39,13 +39,13 @@ zshrc to \$HOME/.zshrc.
     - set EDITOR=vim
     - create setenv function for csh compatibility
     - load all sources from $HOME/.zsh/homes
-    - add \$HOME/bin to global \$PATH
+    - add $HOME/bin to global $PATH
     - adjust umask
     - configure auto completion
     - set some zsh options
 
 - zshrc:
-    - set prompt to: "[<username>]<current directory> $"
+    - set prompt to: "[\<username\>]\<current directory\> $"
     - set vi style key bindings
     - loads bashcompletions from $HOME/.zsh/bash_completion
     - defines bash like Ctrl-R and Ctrl-S for incremental history search
