@@ -116,7 +116,7 @@ endif " has("autocmd")
 " man page mapping for K
 nnoremap <silent> K :Man <cword><CR>
 
-nnoremap <silent> <C-N> :silent nohl<CR>	"press C-N do unhilte searches
+nnoremap <silent> <C-A> :silent nohl<CR>	"press C-A to unhilte searches
 nnoremap <C-O> i?<ESC>r	"inserts exaclty one char
 nnoremap <C-P> a?<ESC>r	"appends exactly one char
 nnoremap ,c xph		"xchg 2 letters
