@@ -1,6 +1,0 @@
-#compdef cs
-
-_arguments \
-	"-r:show raw entries:" \
-	"-n:show only named entries:"
-

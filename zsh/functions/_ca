@@ -1,5 +1,0 @@
-#compdef ca
-
-_arguments \
-	"-n:choose name for bookmark:" \
-	"*:choose files:_files"
