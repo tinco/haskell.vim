@@ -61,12 +61,18 @@ syn match hsConSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
 " Reserved symbols--cannot be overloaded.
 syn match hsDelimiter  "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
 
+sy region hsInnerParen start="(" end=")" contained contains=hsInnerParen
+sy region hs_InfixOpFunctionName start="^(" end=")\s*[^:`]\(\W\&\S\&[^'`()[\]{}@]\)\+"re=s
+    \ contained keepend contains=hsInnerParen,hs_HlInfixOp
+
 sy match hs_hlFunctionName "[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained 
 sy match hs_FunctionName "^[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained contains=hs_hlFunctionName
 sy match hs_HighliteInfixFunctionName "`[a-z_][^`]*`" contained
 sy match hs_InfixFunctionName "^\S[^=]*`[a-z_][^`]*`"me=e-1 contained contains=hs_HighliteInfixFunctionName,hsType,hsConSym,hsVarSym
-sy match hs_HlInfixOp "\(\W\&\S\&[^`()[\]{}']\)\+" contained
-sy match hs_InfixOpFunctionName "^\(\w\|[[{(]\)\(\w\|\s\|\n\|[[\]{}()]\)*[^:]=*\(\W\&\S\&\&[^='`()[\]{}@]\)\+" contained contains=hs_HlInfixOp
+sy match hs_HlInfixOp "\(\W\&\S\&[^`(){}'[\]]\)\+" contained
+sy match hs_InfixOpFunctionName "^\(\w\|[[\]{}]\)\+\s*[^:]=*\(\W\&\S\&[^='`()[\]{}@]\)\+"
+    \ contained contains=hs_HlInfixOp
+
 sy match hs_OpFunctionName        "(\(\W\&[^(),]\)\+)" contained
 sy region hs_Function start="^[a-z_([{]" end="=\(\s\|\n\|\w\|[([]\)" keepend extend
         \ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym
