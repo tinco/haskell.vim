@@ -44,7 +44,7 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syntax sync fromstart "mmhhhh.... is this really ok?
+syntax sync fromstart "mmhhhh.... is this really ok to do so?
 
 " (Qualified) identifiers (no default highlighting)
 syn match ConId "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=\<[A-Z][a-zA-Z0-9_']*\>"
@@ -61,7 +61,7 @@ syn match hsConSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
 " Reserved symbols--cannot be overloaded.
 syn match hsDelimiter  "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
 
-sy region hsInnerParen start="(" end=")" contained contains=hsInnerParen
+sy region hsInnerParen start="(" end=")" contained contains=hsInnerParen,hsConSym,hsType,hsVarSym
 sy region hs_InfixOpFunctionName start="^(" end=")\s*[^:`]\(\W\&\S\&[^'`()[\]{}@]\)\+"re=s
     \ contained keepend contains=hsInnerParen,hs_HlInfixOp
 
