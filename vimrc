@@ -71,6 +71,24 @@ set hidden
 set shiftwidth=4
 set tabstop=4
 set expandtab
+set textwidth=79
+set laststatus=2
+
+set statusline=%<%n:%f%{ModifiedStr()}\ %y\ %h%r[fo=%{&fo}][spell=%{&spell}]%=%-14.(%l,%c%V%)\ %P
+set fo=croq
+
+function ModifiedStr()
+    if (&modified)
+        return '+'
+    else
+        return ''
+    endif
+endfunction
+
+augroup vimrc_autocmds
+    autocmd BufRead * highlight OverLength ctermbg=grey guibg=#592929
+    autocmd BufRead * match OverLength /\%80v.*/
+augroup END
 
 set backupdir=~/.vim_backup
 
@@ -88,16 +106,12 @@ source $VIMRUNTIME/ftplugin/man.vim
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  autocmd FileType text setlocal textwidth=78 fo+=t
 
-  autocmd FileType pdc setlocal textwidth=78
+  autocmd FileType pdc setlocal textwidth=78 fo+=t
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -206,3 +220,5 @@ let g:haddock_docdir = "/usr/share/doc/ghc/html/"
 au Bufenter *.hs compiler ghc
 
 nmap <TAB> <C-^>
+
+set foldmethod=manual
