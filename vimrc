@@ -87,7 +87,7 @@ endfunction
 
 augroup vimrc_autocmds
     autocmd BufRead * highlight OverLength ctermbg=grey guibg=#592929
-    autocmd BufRead * match OverLength /\%80v.*/
+    autocmd BufRead *.c,*.hs,*.js,*.rb match OverLength /\%80v.*/
 augroup END
 
 set backupdir=~/.vim_backup
