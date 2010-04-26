@@ -5,23 +5,6 @@ export ARCH=`uname -s 2>/dev/null | tr '[:upper:]' '[:lower:]'`
 
 setenv() { export $1=$2 }  # csh compatibility
 
-[ -d "$HOME/.zsh/homes" ] && {
-    for h in `ls "$HOME/.zsh/homes"`; do
-        source "$HOME/.zsh/homes/$h"
-    done
-}
-
-export PATH="$HOME/bin:$PATH"
-
-#export PAKCS_HOME=$HOME/dateien/src/pakcs
-#export PATH="$PATH:$PAKCS_HOME/bin"
-
-# export PATH="$PATH:$HOME/uni/uebb/parsergen/bin"
-
-# 
-export PATH="$PATH:$HOME/.private/bin"
-export MANPATH="$HOME/.private/share/man:$MANPATH"
-
 setopt AUTO_CD
 setopt C_BASES
 setopt APPEND_HISTORY
@@ -55,4 +38,33 @@ zstyle :compinstall filename '/etc/zshrc'
 
 autoload -U compinit
 compinit
+
+#init bash completion
+autoload bashcompinit
+bashcompinit
+
+[ -d $HOME/.zsh/bash_completion ] && {
+    for bs in `ls $HOME/.zsh/bash_completion`; do
+        source "$HOME/.zsh/bash_completion/$bs"
+    done
+}
+
+# load libraries
+
+[ -d "$HOME/.zsh/lib" ] && {
+    for h in `ls "$HOME/.zsh/lib"`; do
+        source "$HOME/.zsh/lib/$h"
+    done
+}
+
+export PATH="$HOME/bin:$PATH"
+
+#export PAKCS_HOME=$HOME/dateien/src/pakcs
+#export PATH="$PATH:$PAKCS_HOME/bin"
+
+# export PATH="$PATH:$HOME/uni/uebb/parsergen/bin"
+
+# 
+export PATH="$PATH:$HOME/.private/bin"
+export MANPATH="$HOME/.private/share/man:$MANPATH"
 

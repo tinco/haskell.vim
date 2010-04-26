@@ -1,0 +1,65 @@
+
+alias mkdir='mkdir -p'
+alias grep='grep --color=auto'
+
+alias rdo="su root -c"
+
+if [ "$ARCH" = 'darwin' ]; then
+    alias textedit='open -a TextEdit'
+    alias safari='open -a Safari'
+    alias firefox='open -a Firefox'
+    alias chrome='open -a Google\ Chrome'
+    alias itunes='open -a iTunes'
+    alias browser=chrome
+else
+    alias browser=firefox
+fi
+
+alias ls='ls -G -b'
+alias sl=ls
+alias l='ls'
+alias la='ls -a'
+alias ll='ls -l'
+alias lal='ls -la'
+alias lla='ls -la'
+alias -- +='pushd .'
+alias -- -='popd'
+alias .='pwd'
+alias o='less'
+alias zo='zless'
+
+# Super user
+alias _='sudo'
+alias ss='sudo su -'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias lsempty='ls -ld **/*(/^F)'
+alias lsd='ls -lfd *(/)'
+alias lsnew='ls -lfd *(om[1,10])'
+alias lsnewd='ls -lfd *(/om[1,10])'
+alias lsnewf='ls -lfd *(.om[1,10])'
+alias lsold='ls -lfd *(Om[1,10])'
+alias lsoldd='ls -lfd *(/om[1,10])'
+alias lsoldf='ls -lfd *(.om[1,10])'
+
+alias lsbig='ls -lfd *(.OL[1,10])'
+alias lssmall='ls -lfd *(.oL[1,10])'
+
+alias -s html=browser
+alias -s com=browser
+alias -s org=browser
+alias -s de=browser
+alias -s net=browser
+
+alias -g G='|& grep --color=auto -i'
+alias -g L='|& less'
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g DN=/dev/null
+alias -g LL="2>&1 | less"
+alias -g V="|& vim -R -"
+
