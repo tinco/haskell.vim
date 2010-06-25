@@ -113,7 +113,8 @@ endif
 sy keyword hsModuleStartLabel module contained
 sy keyword hsExportModuleLabel module contained
 sy keyword hsModuleWhereLabel where contained
-sy match hsImport		"\<import\>\(.\|[^(]\)*\((.*)\)\?" contains=hsImportLabel,hsImportMod,hsModuleName,hsImportList
+sy match hsImport		"\<import\>\(.\|[^(]\)*\((.*)\)\?" 
+         \ contains=hsPackageString,hsImportLabel,hsImportMod,hsModuleName,hsImportList
 sy keyword hsImportLabel import contained
 sy keyword hsImportMod		as qualified hiding contained
 sy match   hsModuleName  excludenl "\([A-Z]\w*\.\?\)*" contained 
@@ -129,6 +130,7 @@ sy region hsExportList matchgroup=hsExportListParens start="("rs=s+1 end=")"re=e
         \ contained
         \ keepend extend
         \ contains=hsBlockComment,hsLineComment,hsType,hs_hlFunctionName,hsExportListInner,hsExportModule
+syn region	hsPackageString	start=+L\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=cSpecial contained
 
 sy keyword hsFFIForeign foreign contained
 sy keyword hsFFIImportExport import export contained
@@ -228,6 +230,7 @@ if version >= 508 || !exists("did_hs_syntax_inits")
 
   HiLink hsImportLabel      Include
   HiLink hsImportMod        Include
+  HiLink hsPackageString    hsString
 
   HiLink hsOperator         Operator
 
