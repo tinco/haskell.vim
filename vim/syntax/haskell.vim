@@ -7,6 +7,9 @@
 "   - functions and types in import and module declarations are matched
 "   - removed hs_highlight_more_types (just not needed anymore)
 "   - enable spell checking in comments and strings only
+"   - FFI highlighting
+"   - QuasiQuotation
+"   - PackageImport
 "
 " TODO: find out which vim versions are still supported
 "
@@ -132,6 +135,7 @@ sy region hsExportList matchgroup=hsExportListParens start="("rs=s+1 end=")"re=e
         \ contains=hsBlockComment,hsLineComment,hsType,hs_hlFunctionName,hsExportListInner,hsExportModule
 syn region	hsPackageString	start=+L\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=cSpecial contained
 
+" FFI support
 sy keyword hsFFIForeign foreign contained
 sy keyword hsFFIImportExport import export contained
 sy keyword hsFFICallConvention ccall stdcall contained
@@ -140,6 +144,12 @@ sy region  hsFFIString		start=+"+  skip=+\\\\\|\\"+  end=+"+  contained contains
 sy match hsFFI excludenl "\<foreign\>\(.\&[^\"]\)*\"\(.\)*\"\(\s\|\n\)*\(.\)*::"
   \ keepend
   \ contains=hsFFIForeign,hsFFIImportExport,hsFFICallConvention,hsFFISafety,hsFFIString,hs_OpFunctionName,hs_hlFunctionName
+
+" QuasiQuotation
+sy region hsQQ start="\[\$" end="|\]" keepend contains=hsQQVarID,hsQQEnd,hsQQContent
+sy match hsQQContent ".*"me=e-2 contained
+sy match hsQQEnd "|\]" contained
+sy match hsQQVarID "\[\$\(.\&[^|]\)*|" contained
 
 " hsModule regex MUST match all possible symbols between 'module' and 'where'
 " else overlappings with other syntax elements will break correct hsModule 
@@ -277,6 +287,10 @@ if version >= 508 || !exists("did_hs_syntax_inits")
   HiLink hsFFIImportExport  Structure
   HiLink hsFFICallConvention Keyword
   HiLink hsFFISafety         Keyword
+
+  HiLink hsQQVarID Keyword
+  HiLink hsQQEnd   Keyword
+  HiLink hsQQContent String
 
   delcommand HiLink
 endif
