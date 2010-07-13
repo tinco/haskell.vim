@@ -145,12 +145,6 @@ sy match hsFFI excludenl "\<foreign\>\(.\&[^\"]\)*\"\(.\)*\"\(\s\|\n\)*\(.\)*::"
   \ keepend
   \ contains=hsFFIForeign,hsFFIImportExport,hsFFICallConvention,hsFFISafety,hsFFIString,hs_OpFunctionName,hs_hlFunctionName
 
-" QuasiQuotation
-sy region hsQQ start="\[\$" end="|\]" keepend contains=hsQQVarID,hsQQEnd,hsQQContent
-sy match hsQQContent ".*"me=e-2 contained
-sy match hsQQEnd "|\]" contained
-sy match hsQQVarID "\[\$\(.\&[^|]\)*|" contained
-
 " hsModule regex MUST match all possible symbols between 'module' and 'where'
 " else overlappings with other syntax elements will break correct hsModule 
 " syntax highliting or evaluation of regex will stall vim.
@@ -181,6 +175,11 @@ sy match   hsLineComment      "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains
 sy region  hsBlockComment     start="{-"  end="-}" contains=hsBlockComment,hsCommentTodo,@Spell
 sy region  hsPragma	       start="{-#" end="#-}"
 
+" QuasiQuotation
+sy region hsQQ start="\[\$" end="|\]"me=e-2 keepend contains=hsQQVarID,hsQQContent nextgroup=hsQQEnd
+sy match hsQQContent ".*" contained
+sy match hsQQEnd "|\]" contained
+sy match hsQQVarID "\[\$\(.\&[^|]\)*|" contained
 
 if exists("hs_highlight_debug")
   " Debugging functions from the standard prelude.
