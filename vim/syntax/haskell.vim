@@ -47,7 +47,8 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syntax sync fromstart "mmhhhh.... is this really ok to do so?
+"syntax sync fromstart "mmhhhh.... is this really ok to do so?
+syntax sync linebreaks=15 minlines=50 maxlines=500
 
 syn match  hsSpecialChar	contained "\\\([0-9]\+\|o[0-7]\+\|x[0-9a-fA-F]\+\|[\"\\'&\\abfnrtv]\|^[A-Z^_\[\\\]]\)"
 syn match  hsSpecialChar	contained "\\\(NUL\|SOH\|STX\|ETX\|EOT\|ENQ\|ACK\|BEL\|BS\|HT\|LF\|VT\|FF\|CR\|SO\|SI\|DLE\|DC1\|DC2\|DC3\|DC4\|NAK\|SYN\|ETB\|CAN\|EM\|SUB\|ESC\|FS\|GS\|RS\|US\|SP\|DEL\)"
@@ -68,6 +69,12 @@ syn match hsConSym "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=:[-!#$%&\*\+./<=>\?@\\^|~:]*"
 syn match hsVarSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[a-z][a-zA-Z0-9_']*`"
 syn match hsConSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
 
+" Toplevel Template Haskell support
+"sy match hsTHTopLevel "^[a-z]\(\(.\&[^=]\)\|\(\n[^a-zA-Z0-9]\)\)*"
+sy match hsTHIDTopLevel "^[a-z]\S*" 
+sy match hsTHTopLevel "^\$(\?" nextgroup=hsTHTopLevelName 
+sy match hsTHTopLevelName "[a-z]\S*" contained
+
 " Reserved symbols--cannot be overloaded.
 syn match hsDelimiter  "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
 
@@ -84,8 +91,11 @@ sy match hs_InfixOpFunctionName "^\(\(\w\|[[\]{}]\)\+\|\(\".*\"\)\|\('.*'\)\)\s*
     \ contained contains=hs_HlInfixOp,hsCharacter
 
 sy match hs_OpFunctionName        "(\(\W\&[^(),\"]\)\+)" contained
-sy region hs_Function start="^["'a-z_([{]" end="=\(\s\|\n\|\w\|[([]\)" keepend extend
+"sy region hs_Function start="^["'a-z_([{]" end="=\(\s\|\n\|\w\|[([]\)" keepend extend
+sy region hs_Function start="^["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)" keepend extend
         \ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter
+
+syntax sync match hsTopLevelSync groupthere hs_Function "^\s.*" minlines=10
 
 sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
 
@@ -187,7 +197,6 @@ if exists("hs_highlight_debug")
 endif
 
 
-
 " C Preprocessor directives. Shamelessly ripped from c.vim and trimmed
 " First, see whether to flag directive-like lines or not
 if (!exists("hs_allow_hash_operator"))
@@ -286,6 +295,9 @@ if version >= 508 || !exists("did_hs_syntax_inits")
   HiLink hsFFIImportExport  Structure
   HiLink hsFFICallConvention Keyword
   HiLink hsFFISafety         Keyword
+
+  HiLink hsTHIDTopLevel   Macro
+  HiLink hsTHTopLevelName Macro
 
   HiLink hsQQVarID Keyword
   HiLink hsQQEnd   Keyword
