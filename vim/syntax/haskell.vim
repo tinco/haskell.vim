@@ -9,6 +9,7 @@
 "   - enable spell checking in comments and strings only
 "   - FFI highlighting
 "   - QuasiQuotation
+"   - top level Template Haskell slices
 "   - PackageImport
 "
 " TODO: find out which vim versions are still supported
@@ -94,8 +95,6 @@ sy match hs_OpFunctionName        "(\(\W\&[^(),\"]\)\+)" contained
 "sy region hs_Function start="^["'a-z_([{]" end="=\(\s\|\n\|\w\|[([]\)" keepend extend
 sy region hs_Function start="^["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)" keepend extend
         \ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter
-
-syntax sync match hsTopLevelSync groupthere hs_Function "^\s.*" minlines=10
 
 sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
 
