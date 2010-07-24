@@ -22,6 +22,9 @@ else
 	umask 022
 fi
 
+fpath=( ~/.zsh/functions/ $fpath )
+autoload -U ~/.zsh/functions/*(.)
+
 # set auto completion
 zstyle ':completion:*' completer _expand _complete _approximate _match _correct 
 zstyle ':completion:*' completions 1
