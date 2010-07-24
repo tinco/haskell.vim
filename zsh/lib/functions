@@ -3,6 +3,13 @@ oleo() {
     browser "http://dict.leo.org/ende?lang=de&lp=ende&search=$*"
 }
 
+if [ "$ARCH" = 'darwin' ]; then
+
+pman() { man -t $* | ps2pdf - - | open -g -f -a /Applications/Preview.app }
+bman() { man $* | man2html | bcat }
+
+fi
+
 dwicti()  { browser http://de.wiktionary.org/wiki/${(C)1// /_} }
 ewicti()  { browser http://en.wiktionary.org/wiki/${(C)1// /_} }
 
