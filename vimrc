@@ -221,4 +221,13 @@ au Bufenter *.hs compiler ghc
 
 nmap <TAB> <C-^>
 
+" write file with sudo
+cmap w!! w !sudo tee % >/dev/null
+
+"search+replace word under cursor
+"nnoremap <C-S> :,$s/\<<C-R><C-W>\>/
+nmap <C-C> :,$s/\<<C-R><C-W>\>//<Left>
+
 set foldmethod=manual
+
+set formatprg=par\ -req
