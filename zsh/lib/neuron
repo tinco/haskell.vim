@@ -1,0 +1,4 @@
+
+if [ "$ARCH" = 'darwin' ]; then
+    export PATH="$PATH:/Applications/NEURON-7.1/nrn/umac/bin"
+fi
