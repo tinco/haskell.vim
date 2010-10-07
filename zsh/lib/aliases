@@ -12,6 +12,10 @@ if [ "$ARCH" = 'darwin' ]; then
     alias itunes='open -a iTunes'
     alias browser=chrome
 
+    alias ql='qlmanage -p 2>/dev/null'
+
+    alias -g P='| open -g -f -a /Applications/Preview.app'
+
     alias cdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt `'
 else
     alias browser=firefox
