@@ -3,7 +3,7 @@ HS_AUTOJUMP_HOME="$HOME/.cabal/"
 export PATH="$AUTOJUMP_HOME/bin:$PATH"
 
 function autojmp_preexec() {
-    { (hsautojmp add "$(pwd -P)"&)>/dev/null 2>>|${HOME}/.autojmp_errors ; } 2>/dev/null
+    { (hsautojmp add "$(pwd -P)"&)>/dev/null 2>>|${HOME}/.hsautojmp_errors ; } 2>/dev/null
 }
 
 typeset -ga preexec_functions
