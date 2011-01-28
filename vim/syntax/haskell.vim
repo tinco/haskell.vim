@@ -110,11 +110,11 @@ sy keyword hsInfix infix infixl infixr
 sy keyword hsStatement  do case of let in
 sy keyword hsConditional if then else
 
-if exists("hs_highlight_types")
+"if exists("hs_highlight_types")
   " Primitive types from the standard prelude and libraries.
   sy match hsType "\<[A-Z]\(\S\&[^,.]\)*\>"
   sy match hsType "()"
-endif
+"endif
 
 " Not real keywords, but close.
 if exists("hs_highlight_boolean")
@@ -135,13 +135,9 @@ sy region  hsImportList matchgroup=hsImportListParens start="("rs=s+1 end=")"re=
         \ contained 
         \ keepend extend
         \ contains=hsType,hsLineComment,hsBlockComment,hs_hlFunctionName,hsImportListInner
-sy region hsExportListInner start="(" end=")" contained keepend extend 
-sy region hsExportListInner start="(" end=")" contained keepend extend contains=hs_OpFunctionName
-sy match hsExportModule "\<module\>\(\s\|\t\|\n\)*.*" contained contains=hsExportModuleLabel,hsModuleName
-sy region hsExportList matchgroup=hsExportListParens start="("rs=s+1 end=")"re=e-1
-        \ contained
-        \ keepend extend
-        \ contains=hsBlockComment,hsLineComment,hsType,hs_hlFunctionName,hsExportListInner,hsExportModule
+
+sy match hsExportModule "\<module\>\(\s\|\t\|\n\)*\([A-Z]\w*\.\?\)*" contained contains=hsExportModuleLabel,hsModuleName
+
 syn region	hsPackageString	start=+L\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=cSpecial contained
 
 " FFI support
@@ -154,26 +150,34 @@ sy match hsFFI excludenl "\<foreign\>\(.\&[^\"]\)*\"\(.\)*\"\(\s\|\n\)*\(.\)*::"
   \ keepend
   \ contains=hsFFIForeign,hsFFIImportExport,hsFFICallConvention,hsFFISafety,hsFFIString,hs_OpFunctionName,hs_hlFunctionName
 
-" hsModule regex MUST match all possible symbols between 'module' and 'where'
-" else overlappings with other syntax elements will break correct hsModule 
-" syntax highliting or evaluation of regex will stall vim.
-"
-" regex parts:
-"   1: match keyword "module"
-"   2: match modulename (optionaly comma separated)
-"   3.1 and 3.2: parens of optional symbol list
-"   4: final keyword "where"
-"   5: any alphanumeric symbol
-"   6: symbol list delimiter ","
-"   7: any symbol non-alphanumeric symbol enclosed in parenthesis. e.g. (*)
-"   8: optional line comment
-"
-"                                                                         |   optional Symbol List                            |
-"                             |   1    |            |   2   |             |3.1| 5  6 :  7  :   8                          |3.2|            |   4   |
-syn match hsModule excludenl "\<module\>\(\s\|\n\)*\(\<.*\>\)\(\s\|\n\)*\((\(\w\|,\|(\W*)\|--.*\n\|\.\|{\|}\|-\|\#\|'\|\s\|\n\)*)\)\?\(\s\|\n\)*\<where\>" 
-    \ contains=hsModuleStartLabel,hsModuleWhereLabel,hsModuleName,hsExportList,hsModuleStart
+" new module highlighting
+syn match hsModuleStart "^module\(\s\|\n\)*\(\<\(\w\|\.\)*\>\)\(\s\|\n\)*" 
+  \ contains=hsModuleStartLabel,hsModuleName
+  \ nextgroup=hsModuleCommentA,hsModuleExports,hsModuleWhereLabel
 
-"hi hsModule guibg=red
+syn region hsModuleCommentA start="{-" end="-}"
+  \ contains=hsModuleCommentA,hsCommentTodo,@Spell contained
+  \ nextgroup=hsModuleCommentA,hsModuleExports,hsModuleWhereLabel skipwhite skipnl
+
+syn match hsModuleCommentA "--.*\n"
+  \ contains=hsCommentTodo,@Spell contained
+  \ nextgroup=hsModuleCommentA,hsModuleExports,hsModuleWhereLabel skipwhite skipnl
+
+syn region hsDelimTypeExport start="\<[A-Z]\(\S\&[^,.]\)*\>(" end=")" contained
+   \ contains=hsType
+
+syn region hsModuleExports start="(" end=")" contained
+   \ nextgroup=hsModuleCommentB,hsModuleWhereLabel skipwhite skipnl
+   \ contains=hsBlockComment,hsLineComment,hsType,hsDelimTypeExport,hs_hlFunctionName,hs_OpFunctionName,hsExportModule
+
+syn match hsModuleCommentB "--.*\n"
+  \ contains=hsCommentTodo,@Spell contained
+  \ nextgroup=hsModuleCommentB,hsModuleWhereLabel skipwhite skipnl
+
+syn region hsModuleCommentB start="{-" end="-}"
+   \ contains=hsModuleCommentB,hsCommentTodo,@Spell contained
+   \ nextgroup=hsModuleCommentB,hsModuleWhereLabel skipwhite skipnl
+" end module highlighting
 
 sy match   hsNumber		"\<[0-9]\+\>\|\<0[xX][0-9a-fA-F]\+\>\|\<0[oO][0-7]\+\>"
 sy match   hsFloat		"\<[0-9]\+\.[0-9]\+\([eE][-+]\=[0-9]\+\)\=\>"
@@ -267,11 +271,17 @@ if version >= 508 || !exists("did_hs_syntax_inits")
   HiLink hsLiterateComment		  hsComment
   HiLink hsBlockComment     hsComment
   HiLink hsLineComment      hsComment
+  HiLink hsModuleCommentA   hsComment
+  HiLink hsModuleCommentB   hsComment
   HiLink hsComment          Comment
   HiLink hsCommentTodo      Todo
   HiLink hsPragma           SpecialComment
   HiLink hsBoolean			  Boolean
-  HiLink hsType             Type
+
+  if exists("hs_highlight_types")
+      HiLink hsDelimTypeExport  hsType
+      HiLink hsType             Type
+  endif
 
   HiLink hsDebug            Debug
 
