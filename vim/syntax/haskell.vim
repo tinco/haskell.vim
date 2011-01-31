@@ -130,10 +130,10 @@ sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)"
     \ nextgroup=hsImportParams,hsImportIllegal skipwhite
 sy keyword hsImportLabel import qualified contained
 
+sy match hsImportIllegal "\w\+" contained
+
 sy keyword hsAsLabel as contained
 sy keyword hsHidingLabel hiding contained
-
-sy match hsImportIllegal "\w\+" contained
 
 sy match hsImportParams "as\s\+\(\w\+\)" contained
     \ contains=hsModuleName,hsAsLabel
