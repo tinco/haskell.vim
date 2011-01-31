@@ -220,9 +220,11 @@ sy region  hsPragma	       start="{-#" end="#-}"
 
 " QuasiQuotation
 sy region hsQQ start="\[\$" end="|\]"me=e-2 keepend contains=hsQQVarID,hsQQContent nextgroup=hsQQEnd
+sy region hsQQNew start="\[\(.\&[^|]\&\S\)*|" end="|\]"me=e-2 keepend contains=hsQQVarIDNew,hsQQContent nextgroup=hsQQEnd
 sy match hsQQContent ".*" contained
 sy match hsQQEnd "|\]" contained
 sy match hsQQVarID "\[\$\(.\&[^|]\)*|" contained
+sy match hsQQVarIDNew "\[\(.\&[^|]\)*|" contained
 
 if exists("hs_highlight_debug")
   " Debugging functions from the standard prelude.
@@ -342,6 +344,7 @@ if version >= 508 || !exists("did_hs_syntax_inits")
   HiLink hsTHTopLevelName Macro
 
   HiLink hsQQVarID Keyword
+  HiLink hsQQVarIDNew Keyword
   HiLink hsQQEnd   Keyword
   HiLink hsQQContent String
 
