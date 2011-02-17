@@ -16,6 +16,9 @@
 " set encoding=iso-8859-1
 set encoding=utf-8
 set termencoding=utf-8
+set ffs=unix,dos,mac "Default file types
+
+set autoread
 
 let hs_highlight_boolean=1
 let hs_highlight_types=1
@@ -33,16 +36,29 @@ set nocompatible
 set backspace=indent,eol,start
 
 set autoindent		" always set autoindenting on
+set smartindent
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
   set backup		" keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
+set history=800		" keep 800 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
+set cmdheight=2
 set incsearch		" do incremental searching
-set ic
+set ignorecase " ignore case when searching
+set smartcase
+set nolazyredraw " don't redraw while executing macros
+
+set magic " set magic on, for regexes
+
+set showmatch " show matching bracets when text indicator is over them
+
+" turn of error bells
+set noerrorbells
+set novisualbell
+set t_vb=
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -71,6 +87,7 @@ set hidden
 set shiftwidth=4
 set tabstop=4
 set expandtab
+set smarttab
 set textwidth=79
 set laststatus=2
 
@@ -159,6 +176,12 @@ map <leader>d :FuzzyFinderDir<CR>
 map <leader>f :FuzzyFinderFile<CR>
 map <leader>g :FuzzyFinderTag<CR>
 
+" fast saving
+map <leader>w :w!<CR>
+
+"  When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vimrc
+
 "settings for JavaBrowser
 let g:JavaBrowser_Ctags_Cmd=$HOME."/bin/ctags"
 
@@ -191,8 +214,8 @@ map ,,m :make
 map ,lm :mak<Up><Enter><Enter><Enter>
 
 " configure supertab 
-" let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabMappingTabLiteral = '<C-S-Tab>'
+let g:SuperTabDefaultCompletionType = 'context'
+" let g:SuperTabMappingTabLiteral = '<C-S-Tab>'
 imap <S-Tab> <C-x><C-o>
 
 " configure snipMate"
