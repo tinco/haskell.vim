@@ -28,6 +28,8 @@ if v:progname =~? "evim"
   finish
 endif
 
+call pathogen#runtime_append_all_bundles() 
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -104,7 +106,7 @@ endfunction
 
 augroup vimrc_autocmds
     autocmd BufRead * highlight OverLength ctermbg=grey guibg=#592929
-    autocmd BufRead *.c,*.hs,*.js,*.rb match OverLength /\%80v.*/
+    autocmd BufRead *.c,*.hs,*.js,*.rb,*.python match OverLength /\%80v.*/
 augroup END
 
 set backupdir=~/.vim_backup
@@ -214,8 +216,11 @@ map ,,m :make
 map ,lm :mak<Up><Enter><Enter><Enter>
 
 " configure supertab 
-let g:SuperTabDefaultCompletionType = 'context'
+" let g:SuperTabDefaultCompletionType = 'context'
+" let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
 " let g:SuperTabMappingTabLiteral = '<C-S-Tab>'
+autocmd FileType python let b:SuperTabDefaultCompletionType = 'context'
+set complete-=i
 imap <S-Tab> <C-x><C-o>
 
 " configure snipMate"
