@@ -1,7 +1,7 @@
 
 export EDITOR=vim
 
-export ARCH=`uname -s 2>/dev/null | tr '[:upper:]' '[:lower:]'`
+export SYSTEM=`uname -s 2>/dev/null | tr '[:upper:]' '[:lower:]'`
 
 setenv() { export $1=$2 }  # csh compatibility
 
