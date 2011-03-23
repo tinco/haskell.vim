@@ -4,7 +4,7 @@ alias grep='grep --color=auto'
 
 alias rdo="su root -c"
 
-if [ "$ARCH" = 'darwin' ]; then
+if [ "$SYSTEM" = 'darwin' ]; then
     alias textedit='open -a TextEdit'
     alias safari='open -a Safari'
     alias firefox='open -a Firefox'
@@ -21,7 +21,13 @@ else
     alias browser=firefox
 fi
 
-alias ls='ls -G -b'
+if [ "$SYSTEM" = 'darwin' ]; then
+    alias ls='ls -G -b'
+else
+    alias ls='ls --color -b'
+fi
+
+
 alias sl=ls
 alias l='ls'
 alias la='ls -a'

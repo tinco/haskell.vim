@@ -1,5 +1,5 @@
 
-if [ "$ARCH" = 'darwin' ]; then
+if [ "$SYSTEM" = 'darwin' ]; then
     export PATH="$PATH:/usr/texbin"
 fi
 

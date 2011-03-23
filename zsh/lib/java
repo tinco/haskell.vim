@@ -1,8 +1,8 @@
 
-if [ "$ARCH" = 'darwin' ]; then
+if [ "$SYSTEM" = 'darwin' ]; then
     export JAVA_HOME="/Library/Java/Home"
 else
-    export JAVA_HOME="/opt/java"
+    export JAVA_HOME="/usr"
 fi
 
 #add groovy
