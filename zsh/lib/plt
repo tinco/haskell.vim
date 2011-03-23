@@ -1,9 +1,9 @@
 
-if [ "$ARCH" = 'darwin' ]; then
-    export PLT_HOME="/Applications/PLT Scheme v4.1"
-else
-    export PLTHOME="$HOME/lib/plt"
-fi
-
-export PATH="$PLTHOME/bin:$PATH"
+# if [ "$ARCH" = 'darwin' ]; then
+    # export PLT_HOME="/Applications/PLT Scheme v4.2.1"
+# else
+    # export PLT_HOME="$HOME/lib/plt"
+# fi
+# 
+# export PATH="$PLT_HOME/bin:$PATH"
 

@@ -1,0 +1,4 @@
+export PUREHOME="$HOME/lib/pure"
+export PURELIB=$HOME/lib/pure/lib/pure
+export PATH="$PATH:$PUREHOME/bin"
+export MANPATH="$MANPATH:$PUREHOME/usr/man"
