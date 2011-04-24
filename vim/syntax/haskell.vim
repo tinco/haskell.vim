@@ -96,7 +96,10 @@ sy match hs_OpFunctionName        "(\(\W\&[^(),\"]\)\+)" contained
 sy region hs_Function start="^["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)" 
         \ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter
 
-sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
+sy match hs_TypeOp "::"
+sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName,hs_TypeOp
+
+" hi hs_TypeOp guibg=red
 
 " hi hs_InfixOpFunctionName guibg=yellow
 " hi hs_Function guibg=green
@@ -319,6 +322,8 @@ if version >= 508 || !exists("did_hs_syntax_inits")
   endif
 
   HiLink hsDebug            Debug
+
+  HiLink hs_TypeOp          hsOperator
 
   HiLink cCppString         hsString
   HiLink cCommentStart      hsComment
