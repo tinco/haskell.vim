@@ -109,6 +109,9 @@ endfunction
 augroup vimrc_autocmds
     autocmd BufRead * highlight OverLength ctermbg=grey guibg=#592929
     autocmd BufRead *.c,*.hs,*.js,*.rb,*.python match OverLength /\%80v.*/
+    autocmd FileType python setlocal noexpandtab
+    autocmd FileType c setlocal noexpandtab
+    autocmd FileType cpp setlocal noexpandtab
 augroup END
 
 set backupdir=~/.vim_backup
