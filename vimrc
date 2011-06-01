@@ -18,6 +18,8 @@ set encoding=utf-8
 set termencoding=utf-8
 set ffs=unix,dos,mac "Default file types
 
+set clipboard=unnamed
+
 set autoread
 
 let hs_highlight_boolean=1
