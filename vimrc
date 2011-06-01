@@ -61,7 +61,7 @@ set showmatch " show matching bracets when text indicator is over them
 
 " turn of error bells
 set noerrorbells
-set novisualbell
+set visualbell
 set t_vb=
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
