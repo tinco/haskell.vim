@@ -5,7 +5,7 @@ let b:mypython = 1
 
 set tabstop=4
 set shiftwidth=4
-set expandtab
+setlocal noexpandtab
 set nowrap
 
 set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
