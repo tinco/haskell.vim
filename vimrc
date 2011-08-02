@@ -30,6 +30,8 @@ if v:progname =~? "evim"
   finish
 endif
 
+set t_Co=256
+
 call pathogen#runtime_append_all_bundles() 
 
 " Use Vim settings, rather then Vi settings (much better!).
