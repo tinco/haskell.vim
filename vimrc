@@ -114,7 +114,10 @@ augroup vimrc_autocmds
     autocmd FileType python setlocal noexpandtab
     autocmd FileType c setlocal noexpandtab
     autocmd FileType cpp setlocal noexpandtab
+    autocmd FileType go setlocal noexpandtab
 augroup END
+
+let g:localvimrc_ask=0
 
 set backupdir=~/.vim_backup
 
