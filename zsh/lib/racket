@@ -1,7 +1,0 @@
-
-if [ "$SYSTEM" = 'darwin' ]; then
-    export RACKET_HOME="/Applications/Racket v5.0"
-    export PATH="$RACKET_HOME/bin:$PATH"
-    export MANPATH="$RACKET_HOME/man:$MANPATH"
-fi
-

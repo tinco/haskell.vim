@@ -1,8 +1,0 @@
-#compdef j
-
-cur=${words[2, -1]}
-
-hsautojmp complete ${=cur[*]} | while read i; do 
-    compadd -U "$i"; 
-done
-

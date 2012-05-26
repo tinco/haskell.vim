@@ -1,8 +1,0 @@
-
-export JSDOCDIR="$HOME/lib/jsdoc-toolkit"
-export JSDOCTEMPLATEDIR="$JSDOCDIR/templates/jsdoc"
-export PATH="$JSDOCDIR/bin:$PATH"
-
-JSLINT_HOME="$HOME/lib/jslint"
-export PATH="$JSLINT_HOME/bin:$PATH"
-

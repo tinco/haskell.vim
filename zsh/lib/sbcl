@@ -1,5 +1,0 @@
-
-export SBCL_HOME="$HOME/lib/sbcl"
-
-export SBCL_CORE="$HOME/lib/sbcl/sbcl-current.core"
-#alias runsbcl="rlwrap sbcl --core $SBCL_CORE --noinform --eval '(swank:create-server)' --no-sysinit --no-userinit" 

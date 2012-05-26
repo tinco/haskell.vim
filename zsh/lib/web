@@ -1,3 +1,0 @@
-
-export JSLINT_HOME="$HOME/lib/jslint"
-export PATH="$PATH:$JSLINT_HOME/bin"

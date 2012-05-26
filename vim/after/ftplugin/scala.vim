@@ -1,2 +1,0 @@
-
-set makeprg=ant\ -emacs
